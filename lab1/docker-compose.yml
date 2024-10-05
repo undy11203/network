@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  node1:
+    environment:
+      GROUP_IP: ${GROUP_IP}
+    build: .
+    networks:
+      mynetwork:
+        ipv4_address: 172.19.0.2
+        ipv6_address: "2001:db9:1::2"
+
+  node2:
+    environment:
+      GROUP_IP: ${GROUP_IP}
+    build: .
+    networks:
+      mynetwork:
+        ipv4_address: 172.19.0.3
+        ipv6_address: "2001:db9:1::3"
+
+  node3:
+    environment:
+      GROUP_IP: ${GROUP_IP}
+    build: .
+    networks:
+      mynetwork:
+        ipv4_address: 172.19.0.4
+        ipv6_address: "2001:db9:1::4"
+
+networks:
+  mynetwork:
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: 172.19.0.0/16
+        - subnet: "2001:db9:1::/64"

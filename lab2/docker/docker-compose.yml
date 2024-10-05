@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    networks:
+      my-network:
+        ipv4_address: 175.20.0.2
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    networks:
+      my-network:
+        ipv4_address: 175.20.0.3
+    depends_on:
+      - server
+    # Задержка перед запуском клиента
+
+networks:
+  my-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 175.20.0.0/24
+

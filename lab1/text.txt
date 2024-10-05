@@ -1,0 +1,6 @@
+GROUP_IP=224.0.0.1
+GROUP_IP=FF02::1
+docker logs
+docker-compose logs
+GROUP_IP=224.0.0.1 docker-compose up --build && docker-compose logs
+docker kill

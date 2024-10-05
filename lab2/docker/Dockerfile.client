@@ -1,0 +1,25 @@
+FROM jelastic/maven:3.9.5-openjdk-21 AS builder
+
+WORKDIR /app
+
+FROM openjdk:21-slim
+
+  # Копируем собранный .jar файл из предыдущего образа
+ADD ./client/target/lab2-1.0-SNAPSHOT-jar-with-dependencies.jar /app/client.jar
+ADD ./voina-i-mir.pdf /app/voina-i-mir.pdf
+
+  # Запускаем приложение
+CMD ["sh", "-c","java -jar client.jar -p 8080 -i 172.20.0.2 -f voina-i-mir.pdf"]
+
+
+
+# COPY client/pom.xml .
+# COPY client/src ./src
+
+# RUN mvn clean package
+# FROM jinghan94/java-jar-run:latest
+# COPY client.jar /app/client.jar
+# COPY voina-i-mir.pdf /app/client.jar
+# WORKDIR /app
+# CMD ["java", "-jar", "client.jar", "-p", "8080", "-i", "172.20.0.2", "-f", "voina-i-mir.pdf"]
+#

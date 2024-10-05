@@ -1,0 +1,25 @@
+FROM jelastic/maven:3.9.5-openjdk-21 AS builder
+
+WORKDIR /app
+
+# COPY server/pom.xml .
+# COPY server/src ./src
+
+
+RUN mvn clean package
+
+FROM openjdk:21-slim
+
+  # Копируем собранный .jar файл из предыдущего образа
+ADD ./server/target/lab2-1.0-SNAPSHOT-jar-with-dependencies.jar /app/server.jar
+
+  # Запускаем приложение
+CMD ["sh", "-c","java -jar server.jar -p 8080"]
+
+
+
+# FROM jinghan94/java-jar-run:latest
+# COPY server.jar /app/server.jar
+# WORKDIR /app
+# CMD ["java", "-jar", "server.jar", "-p", "8080"]
+
