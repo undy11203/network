@@ -9,7 +9,7 @@ import okhttp3.ResponseBody;
 
 import java.io.IOException;
 
-public class LocationService implements IService {
+public class LocationService {
 
     public Request getRequest(String query) {
         String apiKey = ConfigParser.getValue("LOCATION_KEY");

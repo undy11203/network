@@ -1,7 +1,5 @@
 package network.lab3.controllers;
 
-import network.lab3.models.response.LocationResponse;
-import network.lab3.services.IService;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,7 +17,7 @@ public abstract class BaseApiController<T, R> {
     protected abstract R parseResponse(ResponseBody responseBody) throws IOException;
     protected abstract T extractResult(R response);
 
-    public CompletableFuture<T> get() {
+    public CompletableFuture<T> search() {
         CompletableFuture<T> future = new CompletableFuture<>();
 
         httpClient.newCall(getRequest()).enqueue(new Callback() {

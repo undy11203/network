@@ -9,7 +9,7 @@ import okhttp3.ResponseBody;
 
 import java.io.IOException;
 
-public class WeatherService implements IService {
+public class WeatherService {
 
     public Request getRequest(double lat, double lng) {
         String apiKey = ConfigParser.getValue("WEATHER_KEY");

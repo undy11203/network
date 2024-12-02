@@ -2,6 +2,7 @@ package network.lab3.controllers;
 
 import network.lab3.models.data.Location;
 import network.lab3.models.data.PlaceDescription;
+import network.lab3.models.data.Result;
 import network.lab3.models.data.Weather;
 
 import java.util.ArrayList;
@@ -13,29 +14,40 @@ public class MainController {
         Scanner consoleScanner = new Scanner(System.in);
         String locationName = getLocation(consoleScanner);
         LocationController locationController = new LocationController(locationName);
-        CompletableFuture<Location[]> locationFuture = locationController.get();
-
-        locationFuture.thenApply(locations -> {
+        CompletableFuture<Location[]> locationFuture = locationController.search();
+        System.out.println("Search location...");
+        locationFuture.thenAccept(locations -> {
             try {
                 Location currentLocation = chooseLocation(locations, consoleScanner);
                 WeatherController weatherContoller = new WeatherController(currentLocation.getLat(), currentLocation.getLng());
                 PlacesController placesController = new PlacesController(currentLocation.getLat(), currentLocation.getLng());
 
-                CompletableFuture<Weather> weatherFuture = weatherContoller.get();
-                CompletableFuture<String[]> placesFuture = placesController.get();
+                CompletableFuture<Weather> weatherFuture = weatherContoller.search();
 
-                placesFuture.thenApply(xids -> {
+                System.out.println("Search weather...");
+                CompletableFuture<String[]> placesFuture = placesController.search();
+                System.out.println("Search places...");
+
+                placesFuture.thenAccept((xids) -> {
                     DescriptionPlacesContoller descriptionPlaces = new DescriptionPlacesContoller(xids);
-                    ArrayList<PlaceDescription> descriptions = descriptionPlaces.get();
+                    ArrayList<PlaceDescription> descriptions = descriptionPlaces.searchPlacesDescriptions();
+                    System.out.println("Search descriptions...");
 
-                    return null;
+                    try {
+                        Result result = new Result(currentLocation, weatherFuture.get(), descriptions);
+
+                        showFinalResults(result);
+                    } catch (Exception e) {
+                        System.err.println(e.getMessage());
+                    }
+
                 });
 
             } catch (Exception e) {
                 System.out.println(e.getCause().getMessage());
             }
-            return null;
         });
+
     }
 
     private Location chooseLocation(Location[] locations,Scanner scanner) {
@@ -57,5 +69,14 @@ public class MainController {
     private String getLocation(Scanner scanner) {
         System.out.println("Введите локацию: ");
         return scanner.nextLine();
+    }
+
+    private void showFinalResults(Result result) {
+
+        for (PlaceDescription place : result.getPlaces()) {
+            System.out.println("\n" + place);
+            System.out.println();
+        }
+
     }
 }

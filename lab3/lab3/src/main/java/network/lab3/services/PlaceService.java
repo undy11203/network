@@ -1,18 +1,14 @@
 package network.lab3.services;
 
 import com.google.gson.Gson;
-import network.lab3.models.data.Place;
-import network.lab3.models.data.Weather;
 import network.lab3.models.response.PlaceResponse;
-import network.lab3.models.response.WeatherResponse;
 import network.lab3.utils.ConfigParser;
 import okhttp3.Request;
 import okhttp3.ResponseBody;
 
 import java.io.IOException;
-import java.util.Arrays;
 
-public class PlaceService implements IService {
+public class PlaceService {
     public Request getRequest(double lat, double lng) {
         double width = 0.01; // ширина коробки
         double height = 0.01; // высота коробки
