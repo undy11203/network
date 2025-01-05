@@ -1,69 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="489.0" prefWidth="791.0" style="-fx-background-color: #faffc2;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.controllers.NewGameConfigController">
+<AnchorPane prefHeight="489.0" prefWidth="791.0" style="-fx-background-color: #2A363F;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.project.controllers.NewGameConfigController">
 
-   <TextField fx:id="widthField" alignment="CENTER" layoutX="406.0" layoutY="117.0" promptText="Enter width" text="40"/>
-   <TextField fx:id="heightField" alignment="CENTER" layoutX="406.0" layoutY="163.0" promptText="Enter heigth" text="30"/>
-   <TextField fx:id="foodStaticField" alignment="CENTER" layoutX="406.0" layoutY="209.0" promptText="Enter foodStatic" text="1"/>
-   <TextField fx:id="delayField" alignment="CENTER" layoutX="406.0" layoutY="254.0" promptText="Enter delay" text="1000"/>
+   <TextField fx:id="widthField" alignment="CENTER" layoutX="406.0" layoutY="117.0" promptText="Enter width" text="40" />
+   <TextField fx:id="heightField" alignment="CENTER" layoutX="406.0" layoutY="163.0" promptText="Enter heigth" text="30" />
+   <TextField fx:id="foodStaticField" alignment="CENTER" layoutX="406.0" layoutY="209.0" promptText="Enter foodStatic" text="1" />
+   <TextField fx:id="delayField" alignment="CENTER" layoutX="406.0" layoutY="254.0" promptText="Enter delay" text="1000" />
    <TextField fx:id="gameNameField" alignment="CENTER" layoutX="406.0" layoutY="297.0" promptText="Enter game name" />
    <TextField fx:id="nicknameField" alignment="CENTER" layoutX="406.0" layoutY="340.0" promptText="Enter nickname" />
-   <VBox layoutX="305.0" layoutY="398.0" prefHeight="68.0" prefWidth="182.0">
-      <Button onAction="#startGame" mnemonicParsing="false" prefHeight="34.0" prefWidth="191.0"
-              style="-fx-background-color: #fadd4b; -fx-border-color: #ffd500; -fx-border-width: 5;" text="Start Game"
-              textFill="#ff7b00">
-         <font>
-            <Font name="DejaVu Sans Bold" size="13.0"/>
-         </font>
-      </Button>
-      <Button onAction="#back" mnemonicParsing="false" prefHeight="34.0" prefWidth="183.0"
-              style="-fx-background-color: #fadd4b; -fx-border-color: #ffd500; -fx-border-width: 5;" text="Back"
-              textFill="#ff7b00">
-         <font>
-            <Font name="DejaVu Sans Bold" size="13.0"/>
-         </font>
-      </Button>
-   </VBox>
-   <Label layoutX="249.0" layoutY="344.0" text="Nickname:" textFill="#ffa400">
+   <Label layoutX="249.0" layoutY="344.0" text="Nickname:" textFill="#00ff62">
       <font>
          <Font name="DejaVu Sans Bold" size="14.0" />
       </font>
    </Label>
-   <Label layoutX="237.0" layoutY="49.0" text="Creating game settings" textFill="#ffa400">
+   <Label layoutX="237.0" layoutY="49.0" text="Creating game settings" textFill="#00ff62">
       <font>
          <Font name="DejaVu Sans Bold" size="24.0" />
       </font>
    </Label>
-   <Label layoutX="249.0" layoutY="301.0" text="Game name:" textFill="#ffa400">
+   <Label layoutX="249.0" layoutY="301.0" text="Game name:" textFill="#00ff62">
       <font>
          <Font name="DejaVu Sans Bold" size="14.0" />
       </font>
    </Label>
-   <Label layoutX="249.0" layoutY="121.0" text="Game field width:" textFill="#ffa400">
+   <Label layoutX="249.0" layoutY="121.0" text="Game field width:" textFill="#00ff62">
       <font>
          <Font name="DejaVu Sans Bold" size="14.0" />
       </font>
    </Label>
-   <Label layoutX="249.0" layoutY="167.0" text="Game field height:" textFill="#ffa400">
+   <Label layoutX="249.0" layoutY="167.0" text="Game field height:" textFill="#00ff62">
       <font>
          <Font name="DejaVu Sans Bold" size="14.0" />
       </font>
    </Label>
-   <Label layoutX="249.0" layoutY="213.0" text="FoodStatic:" textFill="#ffa400">
+   <Label layoutX="249.0" layoutY="213.0" text="FoodStatic:" textFill="#00ff62">
       <font>
          <Font name="DejaVu Sans Bold" size="14.0" />
       </font>
    </Label>
-   <Label layoutX="249.0" layoutY="258.0" text="Delay:" textFill="#ffa400">
+   <Label layoutX="249.0" layoutY="258.0" text="Delay:" textFill="#00ff62">
       <font>
          <Font name="DejaVu Sans Bold" size="14.0" />
       </font>
    </Label>
+   <Button layoutX="300.0" layoutY="386.0" mnemonicParsing="false" onAction="#startGame" prefHeight="34.0" prefWidth="191.0" style="-fx-background-color: #29cd72;" text="Start Game">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Button>
+   <Button layoutX="300.0" layoutY="433.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="191.0" style="-fx-background-color: #29cd72;" text="Back">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Button>
 </AnchorPane>

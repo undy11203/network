@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'org.project'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainModule = 'org.project'
+    mainClass = 'org.project.Main'
+}
+
+dependencies {
+    implementation 'org.projectlombok:lombok:1.18.30'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    implementation 'org.slf4j:slf4j-log4j12:2.0.7'
+    implementation 'org.slf4j:slf4j-simple:2.0.7'
+
+    implementation 'dnsjava:dnsjava:3.6.0'
+}
+
+test {
+    useJUnitPlatform()
+}

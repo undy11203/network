@@ -110,6 +110,9 @@ public class MainController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+        stage.setOnCloseRequest(event -> {
+            exit(new ExitAppEvent());
+        });
     }
 
     private Scene loadScene(String sceneFxml) throws IOException {
